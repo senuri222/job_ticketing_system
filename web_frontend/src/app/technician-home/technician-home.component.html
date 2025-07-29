@@ -1,0 +1,82 @@
+<div class="container mx-auto ">
+                <div class="grid grid-cols-4 sm:grid-cols-12 gap-6 ">
+                    
+                    <div class="col-span-4 sm:col-span-9">
+                        <div class="p-6 space-y-6">
+                            <!-- Greeting -->
+                            <div>
+                                <h2 class="text-lg">Hii sara</h2>
+                                <h1 class="text-2xl font-semibold">Welcome Back!</h1>
+                            </div>
+
+                            <!-- Banner Section -->
+                            <div class="flex flex-col md:flex-row  justify-between bg-[#e0d9fa] rounded-2xl p-6">
+                                <div class="md:w-2/3">
+                                    <h3 class="text-xl font-semibold m-4">What’s on your mind today?</h3>
+                                    <p class="text-gray-700 m-4">
+                                        Take a moment to reflect and focus on what matters most today. Whether you're planning your next steps, exploring new ideas, or just checking in, this space is designed to help you stay organized, inspired, and in control. Let your thoughts guide your actions as you move forward with clarity and purpose.
+                                    </p>
+                                </div>
+                                <div class="md:w-1/3 flex justify-center md:mt-0">
+                                <img src="technitionhome.png" alt="Illustration" class="w-[2\300px] h-auto">
+                                </div>
+                            </div>
+
+                            <!-- Action Cards -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Card 1 -->
+                                <div class="bg-[#d4f5ec] h-auto p-4 rounded-xl shadow-sm">
+                                <p class="m-3">Easily add new spare parts to the system, whether one at a time or in bulk. Streamline inventory updates and keep your records accurate with just a few clicks.</p>
+                                <button class="border ml-3 border-black px-4 py-1 rounded hover:bg-black hover:text-white transition">Add Spare Parts</button>
+                                </div>
+
+                                <!-- Card 2 -->
+                                <div class="bg-[#fedfcb] h-auto p-4 rounded-xl shadow-sm">
+                                <p class="m-3">Efficiently manage user accounts by adding new users, updating existing profiles, or removing access all in one place for seamless user administration.</p>
+                                <button class="border ml-3 border-black px-4 py-1 rounded hover:bg-black hover:text-white transition">Manage Users</button>
+                                </div>
+
+                                <!-- Card 3 -->
+                                <div class="bg-[#f9e0f3] p-4 h-auto rounded-xl shadow-sm">
+                                <p class="m-3">Control access with precision by assigning system privileges to defined job roles, ensuring each user has the right level of authority based on their proffesion.</p>
+                                <button class="border ml-3 border-black px-4 py-1 rounded hover:bg-black hover:text-white transition">Assign Privileges</button>
+                                </div>
+
+                                <!-- Card 4 -->
+                                <div class="bg-[#dff1fd] p-4 h-auto rounded-xl shadow-sm">
+                                <p class="m-3">Stay informed with system reports that provide insights into recent updates, and changes helping you monitor performance and make informed decisions.</p>
+                                <button class="border ml-3 border-black px-4 py-1 rounded hover:bg-black hover:text-white transition">View Reports</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- profile section -->
+                    <div class="col-span-4 sm:col-span-3" *ngIf="userProfile">
+                        <div class="bg-white h-screen shadow rounded-lg p-6">
+                            <div class="flex flex-col items-center">
+                                <img src="user.png" class="w-32 h-32 bg-gray-100 rounded-full mb-4 shrink-0">
+
+                                
+                                <h1 class="text-xl font-bold">{{ userProfile.name }}</h1>
+                                <p class="text-gray-700">{{ userProfile.role }}</p>
+                                
+                            </div>
+                            <hr class="my-6 border-t border-gray-300">
+                            <div class="flex flex-col">
+                                <span class="text-gray-700 uppercase font-bold tracking-wider mb-2">Skills</span>
+                                <ul>
+                                    <li class="mb-2">Name: {{ userProfile.name }}</li>
+                                    <li class="mb-2">Email: {{ userProfile.email }}</li>
+                                    <li class="mb-2">Phone Number: {{ userProfile.mobileno }}</li>
+                                    <li class="mb-2">Address: {{ userProfile.address }}</li>
+                                    <li class="mb-2">NIC No: {{ userProfile.nicno }}</li>
+                                    <li class="mb-2">Gender: {{ userProfile.gender }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
+                </div>

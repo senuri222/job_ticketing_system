@@ -1,0 +1,157 @@
+			<div class="flex items-center justify-between h-16 bg-gray-50 border-b border-gray-200">
+				<h1 class="m-5 text-3xl font-light text-gray-900 tracking-wide">Manage Users</h1>
+			</div>
+
+            <!-- Banner Section -->
+            <div class="p-4 flex gap-4">
+                <div class="flex flex-col md:flex-row items-center justify-between bg-[#f3f0fd] rounded-2xl p-2 px-4">
+                    <div class="md:w-2/3">
+                    <h3 class="text-xl font-semibold m-2">What’s on your mind today?</h3>
+                    <p class="text-gray-700 m-2">
+                        Stay in control of your team with easy access to all user accounts. Here, you can add new users, update existing profiles, or remove inactive accounts. Keeping your user list clean and organized ensures better system performance and role-based access control.
+                    </p>
+                    </div>
+                    
+                    <div class="md:w-1/3 flex justify-center md:mt-0">
+                        <img src="4.png" alt="Illustration" class="w-[250px] h-auto">
+                    </div>
+                </div>
+            </div>
+            
+            
+			<div class="p-4 flex ">
+                <div class="hidden sm:block md:w-1/3 flex bg-[#f5fbfe] rounded-tl-xl rounded-bl-xl md:mt-0">
+                    <img src="userform.png" alt="Illustration" class="w-[400px] h-auto">
+                </div>
+				<div class="w-full md:w-2/3 bg-[#f5fbfe] backdrop-blur-md p-4 rounded-tr-xl rounded-br-xl text-white" >
+                    <h2 class="m-8 text-xl font-light text-black tracking-wide">User Detail Add Note</h2>
+                    <form #userForm="ngForm" (ngSubmit)="onSubmit()" class="pr-10 pl-10 mx-auto">
+                    <div class="grid md:grid-cols-3 md:gap-2">
+                        <div class="relative z-0 w-full mb-5 group">
+                            <input type="text" [(ngModel)]="user.name" name="name" id="name" class="block py-2.5 px-0 w-3/4 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-black focus:outline-none focus:ring-0 focus:border-black peer" placeholder=" " required />
+                            <label for="name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-black peer-focus:dark:text-black peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                Name
+                            </label>
+                        </div>
+                        <div class="relative z-0 w-full mb-5 group">
+                            <input type="text" [(ngModel)]="user.nicno" name="nic" id="nic" class="block py-2.5 px-0 w-2/3 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-black focus:outline-none focus:ring-0 focus:border-black peer" placeholder=" " required />
+                            <label for="nic" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-black peer-focus:dark:text-black peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                NIC No
+                            </label>
+                        </div>
+                        <div class="relative z-0 w-full mb-5 group">
+                            <input type="number" [(ngModel)]="user.mobileno" name="mobile" id="mobile" class="block py-2.5 px-0 w-2/3 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-black focus:outline-none focus:ring-0 focus:border-black peer" placeholder=" " required />
+                            <label for="mobile" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-black peer-focus:dark:text-black peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                Mobile No
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 md:gap-2">
+                         <div class="relative z-0 w-full mb-5 group">
+                            <input type="text" [(ngModel)]="user.address" name="address" id="address" class="block py-2.5 px-0 w-3/4 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-black focus:outline-none focus:ring-0 focus:border-black peer" placeholder=" " required />
+                            <label for="address" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-black peer-focus:dark:text-black peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                Address
+                            </label>
+                        </div>
+                        <div class="relative z-0 w-full mb-5 group">
+                            <input type="email" [(ngModel)]="user.email" name="email" id="email" class="block py-2.5 px-0 w-2/3 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-black focus:outline-none focus:ring-0 focus:border-black peer" placeholder=" " required />
+                            <label for="email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-black peer-focus:dark:text-black peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                Email
+                            </label>
+                        </div>
+                        <div class="relative z-0 w-full mb-5 group">
+                            <input type="password" name="password" id="password" class="block py-2.5 px-0 w-2/3 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-black focus:outline-none focus:ring-0 focus:border-black peer" placeholder=" " required />
+                            <label for="password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-black peer-focus:dark:text-black peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                Password
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-4 md:gap-2">
+                        <!-- Gender Dropdown -->
+                        <div class="relative z-0 w-2/3 mb-5 group">
+                            <select [(ngModel)]="user.gender" name="gender" id="gender" 
+                                class="block py-2.5 pl-4 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-black focus:outline-none focus:ring-0 focus:border-black peer" 
+                                required>
+                                <option value="" disabled selected hidden>Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                            
+                        </div>
+
+                        <!-- Job Role Dropdown -->
+                        <div class="relative z-0 w-2/3 mb-5 group">
+                            <select [(ngModel)]="user.role" name="role" id="role" 
+                                class="block py-2.5 px-0 pl-4 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-black focus:outline-none focus:ring-0 focus:border-black peer" 
+                                required>
+                                <option value="" disabled selected hidden>Job Role</option>
+                                <option value="technician">Technician</option>
+                                <option value="teamleader">Team Leader</option>
+                            </select>
+                        </div>
+                    </div>
+ 
+                    <div class="flex space-x-8 mt-8 mb-5">
+                        <button class="border ml-3 text-black border-black px-4 py-1 rounded hover:bg-black hover:text-white transition">Add User</button>
+                        <button class="border ml-3 text-black border-black px-4 py-1 rounded hover:bg-black hover:text-white transition">Update User</button>
+                        <button class="border ml-3 text-black border-black px-4 py-1 rounded hover:bg-black hover:text-white transition">Delete User</button>
+                        <button type="button" (click)="resetForm()" class="border ml-3 text-black border-black px-4 py-1 rounded hover:bg-black hover:text-white transition">Rest Form</button>                   
+                    </div>
+    
+                    </form>                    
+                </div>
+            </div>
+
+            <div class="p-4 flex gap-4">
+                <div class="w-full bg-[#fdf6fb] backdrop-blur-md p-4 rounded-xl text-white">
+                    <form class="mt-5 mx-auto max-w-2xl py-1 px-6 rounded-full border border-gray-500 flex focus-within:border-gray-600">
+						<input type="text" placeholder="Search Users" [(ngModel)]="searchEmail" name="email" class="bg-transparent w-full text-black focus:outline-none pr-4 font-semibold border-0 focus:ring-0 px-0 py-0">
+						<button (click)="searchUserByEmail()" type="submit" class="flex flex-row items-center justify-center min-w-[107px] px-2 rounded-full font-medium tracking-wide border disabled:cursor-not-allowed disabled:opacity-50 transition ease-in-out duration-150 text-base bg-black text-white font-medium tracking-wide border-transparent py-1 h-[30px] -mr-3" >
+							Search
+						</button>
+                        <button (click)="resetSearch()" class="flex ml-5 flex-row items-center justify-center min-w-[107px] px-2 rounded-full font-medium tracking-wide border disabled:cursor-not-allowed disabled:opacity-50 transition ease-in-out duration-150 text-base bg-black text-white font-medium tracking-wide border-transparent py-1 h-[30px] -mr-3" >
+							Reset
+						</button>
+					</form>
+
+					<div class="relative overflow-x-auto mt-10 shadow-md sm:rounded-lg">
+						<table class="w-full text-sm text-left rtl:text-right text-blue-100 dark:text-blue-100">
+							<thead class="text-xs text-gray-800 uppercase bg-[#fefcfe] border-b border-gray-800 dark:text-gray-800">
+								<tr>
+									<th scope="col" class="px-6 py-3">
+										Name.
+									</th>
+									<th scope="col" class="px-6 py-3">
+										NIC No
+									</th>
+									<th scope="col" class="px-6 py-3">
+										Mobile No
+									</th>
+                                    <th scope="col" class="px-6 py-3">
+										Email
+									</th>
+                                    <th scope="col" class="px-6 py-3">
+										Job Role
+									</th>
+                                    <th scope="col" class="px-6 py-3">
+										Status
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let user of users" (click)="selectUser(user)" class="bg-[#fefcfe] border-b border-black font-medium text-gray-500">
+                                    <td scope="row" class="px-6 py-3">{{ user.name }}</td>
+                                    <td class="px-6 py-3">{{ user.nicno }}</td>
+                                    <td class="px-6 py-3">{{ user.mobileno }}</td>
+                                    <td class="px-6 py-3">{{ user.email }}</td>
+                                    <td class="px-6 py-3">{{ user.role }}</td>
+                                    <td class="px-6 py-3">{{ user.status }}</td> 
+								</tr>
+							</tbody>
+						</table>
+					</div>
+                </div>
+			</div>
+	

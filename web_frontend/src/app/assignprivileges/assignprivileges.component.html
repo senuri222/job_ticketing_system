@@ -1,0 +1,121 @@
+			<div class="flex items-center justify-between h-16 bg-gray-50 border-b border-gray-200">
+				<h1 class="m-5 text-3xl font-light text-gray-900 tracking-wide">Assign Privileges</h1>
+			</div>
+
+            <!-- Banner Section -->
+            <div class="p-4 flex gap-4">
+                <div class="flex flex-col md:flex-row items-center justify-between bg-[#f3f0fd] rounded-2xl p-2 px-4">
+                    <div class="md:w-2/3">
+						<h3 class="text-xl font-semibold m-2">What’s on your mind today?</h3>
+						<p class="text-gray-700 m-2">
+							Take a moment to reflect and focus on what matters most today. Whether you're planning your next steps, exploring new ideas, or just checking in, this space is designed to help you stay organized, inspired, and in control. Let your thoughts guide your actions as you move forward with clarity and purpose.
+						</p>
+                    </div>
+                    
+                    <div class="md:w-1/3 pl- md:mt-0">
+                        <img src="3.png" alt="Illustration" class="w-[300px] h-auto">
+                    </div>
+                </div>
+            </div>
+
+			<!-- Form Section -->
+			 <div class="p-4 flex items-center justify-center gap-4">
+				<div class="flex flex-col w-3/4 md:flex-row items-center justify-between bg-[#f5fbfe] rounded-2xl p-2 px-4">
+					<div class="p-0 m-0">
+						<div class="md:w-full">
+							<h3 class="text-xl font-semibold m-2">Want add a new action or update a existing one?</h3>
+						</div>
+						<form (ngSubmit)="submitAction()" class="flex items-center gap-4 pb-8 pl-10 pt-5 rounded-md bg-[#f5fbfe]">
+							<input [(ngModel)]="actionInput" id="actionInput" name="actionInput" type="text" placeholder="Enter Action" class="px-6 py-1 text-sm border border-black rounded-md w-[500px] placeholder-gray-500 focus:outline-none"/>
+							<button type="submit" class="px-6 py-1 text-sm border border-black rounded-md bg-white hover:bg-black hover:text-white transition">
+								{{ selectedPrivilegeId ? 'Update Action' : 'Add Action' }}
+							</button>
+						</form>
+					</div>
+				</div>
+			 </div>
+
+			<div class="p-4 flex gap-4 items-center justify-center">
+				
+				<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+					<table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+						<thead class="text-xs text-gray-700 uppercase bg-[#eefbf7]">
+							<tr>
+								<th scope="col" class="px-6 py-3">
+									Action
+								</th>
+								<th scope="col" class="px-6 py-3">
+									Admin
+								</th>
+								<th scope="col" class="px-6 py-3">
+									Team Leader
+								</th>
+								<th scope="col" class="px-6 py-3">
+									Technician
+								</th>
+								<th scope="col" class="px-6 py-3">
+									Manager
+								</th>
+								<th scope="col" class="px-6 py-3">
+									Customer
+								</th>
+								<th scope="col" class="px-6 py-3">
+									Assigned Roles
+								</th>
+								<th scope="col" class="px-6 py-3">
+									Delete ?
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let priv of privileges" class="bg-[#f6fdfb] border-b border-gray-600 hover:cursor-pointer hover:bg-[#e0f7fa]" (click)="editPrivilege(priv)">
+								<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+									{{ priv.action }}
+								</th>
+								<td class="px-6 py-4">
+									<button class="font-medium text-sm" [ngClass]="priv.admin ? 'text-red-600' : 'text-blue-600'" (click)="toggleRole(priv, 'admin'); $event.stopPropagation()">
+										{{ priv.admin ? 'Revoke' : 'Assign' }}
+									</button>
+								</td>
+								<td class="px-6 py-4">
+									<button class="font-medium text-sm" [ngClass]="priv.teamleader ? 'text-red-600' : 'text-blue-600'" (click)="toggleRole(priv, 'teamleader'); $event.stopPropagation()">
+										{{ priv.teamleader ? 'Revoke' : 'Assign' }}
+									</button>
+								</td>
+								<td class="px-6 py-4">
+									<button class="font-medium text-sm" [ngClass]="priv.technician ? 'text-red-600' : 'text-blue-600'" (click)="toggleRole(priv, 'technician'); $event.stopPropagation()">
+										{{ priv.technician ? 'Revoke' : 'Assign' }}
+									</button>
+								</td>
+								<td class="px-6 py-4">
+									<button class="font-medium text-sm" [ngClass]="priv.manager ? 'text-red-600' : 'text-blue-600'" (click)="toggleRole(priv, 'manager'); $event.stopPropagation()">
+										{{ priv.manager ? 'Revoke' : 'Assign' }}
+									</button>
+								</td>
+								<td class="px-6 py-4">
+									<button class="font-medium text-sm" [ngClass]="priv.customer ? 'text-red-600' : 'text-blue-600'" (click)="toggleRole(priv, 'customer'); $event.stopPropagation()">
+										{{ priv.customer ? 'Revoke' : 'Assign' }}
+									</button>
+								</td>
+								<!-- <td class="px-6 py-4">
+									<a href="#" class="font-medium text-blue-600  hover:underline">ASSIGN</a>
+									<a href="#" class="font-medium text-red-600 pl-2 hover:underline">REVOKE</a>
+								</td> -->
+								<td class="px-6 py-4">
+									<ul class="text-gray-800 pl-5">
+										<li *ngFor="let role of getAssignedRoles(priv)">{{ role }}</li>
+									</ul>
+								</td>
+								<td class="px-6 py-4">
+									<button type="button" (click)="deletePrivilege(priv.id); $event.stopPropagation()" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-1 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+										Delete
+									</button>
+									
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+		

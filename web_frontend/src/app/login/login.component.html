@@ -1,0 +1,40 @@
+<div class="bg-cover bg-center bg-no-repeat h-screen" style="background-image: url('login.jpg');">
+    <div class="h-screen w-full bg-black bg-opacity-40 flex">
+
+    <!-- Left Section: Logo + Text (Bottom Right Alignment) -->
+    <div class="flex-1 hidden md:flex flex-col justify-end items-start text-white px-10 pb-10">
+      <div class="text-2xl font-bold tracking-wide mb-4 text-left w-full max-w-md">
+        <span class="text-[#fe785f]">▲</span> TermiTech
+      </div>
+      <div class="text-left max-w-md">
+        <h2 class="text-4xl font-semibold mb-2">Don't have an account?</h2>
+        <p class="text-gray-300 mb-4">Register to access all the features of our service. Manage your business in one place. It’s free!</p>
+        
+      </div>
+    </div>
+
+    <!-- Right Glass Form -->
+    <div class="w-full md:w-[600px] h-full backdrop-blur-md bg-white bg-opacity-10 shadow-lg p-8 text-white flex items-center">
+      <form class="w-3/4 ml-10 space-y-5" (submit)="login(); $event.preventDefault()">
+        <h2 class="text-4xl mb-4">Sign in</h2><br>
+        <div>
+          <label class="block text-sm mb-1" for="email">Email</label>
+          <input type="email" [(ngModel)]="email" id="email" name="email" class="w-full px-4 py-2 bg-transparent border-b border-white border-opacity-30 rounded focus:outline-none focus:ring-2 focus:ring-[#fe785f] text-white placeholder-gray-300" placeholder="you@example.com"/>
+        </div>
+        
+        <div>
+          <label class="block text-sm mb-1" for="password">Password</label>
+          <input type="password" [(ngModel)]="password" id="password" name="password" class="w-full px-4 py-2 bg-transparent border-b border-white border-opacity-30 rounded focus:outline-none focus:ring-2 focus:ring-[#fe785f] text-white placeholder-gray-300" placeholder="********"/>
+        </div>
+        <div class="flex items-center text-sm text-gray-300">
+          <input type="checkbox" id="terms" class="mr-2" />
+          <label for="terms">I agree to the statement in <a href="#" class="text-[#fe785f] underline">Terms of service</a></label>
+        </div>
+        <button type="submit" class="w-full py-2 bg-[#fe785f] hover:bg-[#fe785f] rounded text-white font-semibold text-lg">Sign up</button>
+        <p class="text-center text-sm text-gray-300">Have an account? <a href="#" class="text-[#fe785f] underline">Login</a></p>
+
+       
+      </form>
+    </div>
+  </div>
+</div>

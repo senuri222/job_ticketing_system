@@ -1,0 +1,142 @@
+            <!-- Assign jobs -->
+            <div class="flex items-center justify-between h-16 bg-gray-50 border-b border-gray-800">
+				<h1 class="m-5 text-3xl font-light text-gray-900 tracking-wide">Assign Job Cards</h1>
+			</div>
+
+			<div class="p-4">
+				
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+                    <!-- card start -->
+                    <div *ngFor="let machine of machines" class="bg-[#f2f9fe] rounded-lg shadow-lg p-8">
+                        <form>
+                        <input type="hidden" name="machineId" [value]="machine.id">
+                        <h2 class="text-xl font-bold text-gray-800 mb-1">Modal: {{ machine.modal }}</h2>
+                        <h2 class="text-l font-bold text-gray-800 mb-1">Bank: {{ machine.bank }}</h2>
+                        <h2 *ngIf="convertTimestamp(machine.createdAt) as createdDate" class="text-l font-bold text-gray-800 mb-1">Date: {{ createdDate | date:'short' }}</h2>
+                        <p class="text-l font-bold text-gray-700 ">
+                            Issue: {{ machine.issue }}
+                        </p>
+                        
+                        <div class="group relative">
+                            <div class="flex w-full mb-5 group">
+                                <label for="technician-select" class="text-l pr-2 font-bold text-gray-800">Technitian : </label>
+                                <select id="technician-select-{{machine.id}}" name="technician-select" 
+                                class="peer block w-auto pl-5 pr-5 text-sm  text-gray-700 bg-white border-2 border-gray-400 appearance-none  focus:outline-none focus:ring-0 focus:border-black" [(ngModel)]="machine.assignedTechnician" required>
+                                    <option class="text-gray-700" value="" disabled selected hidden>Select </option>
+                                    <option *ngFor="let tech of technicians" [value]="tech.id" class="text-gray-700" value="modal1">{{ tech.name }}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <a class="group relative inline-block focus:ring-2 focus:outline-none" href="#">
+                            <span class="absolute inset-0 translate-x-0 translate-y-0 bg-[#ffbcad] transition-transform group-hover:translate-x-1 group-hover:translate-y-1 rounded-md"></span>
+                            <span class="relative inline-block border-2 border-current px-3 py-1 text-xs font-semibold tracking-wide text-black uppercase rounded-md">
+                                Reject
+                            </span>
+                        </a>
+
+                        <a class="ml-5 group relative inline-block focus:ring-2 focus:outline-none" href="#">
+                            <span class="absolute inset-0 translate-x-0 translate-y-0 bg-[#ffbcad] transition-transform group-hover:translate-x-1 group-hover:translate-y-1 rounded-md"></span>
+                            <span class="relative inline-block border-2 border-current px-3 py-1 text-xs font-semibold tracking-wide text-black uppercase rounded-md">
+                                Assign
+                            </span>
+                        </a>
+                        </form>
+                    </div>
+                    <!-- card end -->
+                    
+                </div>
+			</div>
+
+            <!-- Approved jobs -->
+            <div class="flex items-center justify-between h-16 bg-gray-50 border-b border-gray-800">
+				<h1 class="m-5 text-3xl font-light text-gray-900 tracking-wide">Approved Job Cards</h1>
+			</div>
+
+			<div class="p-4">
+				
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+                    <!-- card start -->
+                    <div class="bg-[#f2f9fe] rounded-lg shadow-lg p-8">
+                        <h2 class="text-xl font-bold text-gray-800 mb-1">Machine Brand: sample brand</h2>
+                        <div class="flex items-start space-x-5 ">
+                            <h2 class="text-l font-bold text-gray-800 mb-1">Bank: BOC</h2>
+                            <h2 class="text-l font-bold text-gray-800 mb-1">Job ID: 011</h2>
+                        </div>
+                        <h2 class="text-l font-bold text-gray-800 mb-1">Date: 2025/01/14</h2>
+                        <h2 class="text-l font-bold text-gray-800 mb-1">Technitian: Technitian 01</h2>
+                        <p class="text-gray-700 "> 
+                            Issue: Some issue note with sample machine
+                        </p>
+                        <div class="text-left">
+                            <h2 class="text-l font-bold ">Required spare parts:</h2>
+                            <div class="grid grid-cols-3 gap-x-4 text-left">
+                            <div class="flex items-center"><span class="mr-2">•</span>Part 1</div>
+                            <div class="flex items-center"><span class="mr-2">•</span>Part 1</div>
+                            <div class="flex items-center"><span class="mr-2">•</span>Part 2</div>
+                            <div class="flex items-center"><span class="mr-2">•</span>Part 2</div>
+                            <div class="flex items-center"><span class="mr-2">•</span>Part 3</div>
+                            <div class="flex items-center"><span class="mr-2">•</span>Part 3</div>
+                            </div>
+                        </div> 
+                    </div>
+                    <!-- card end -->
+                    
+                </div>
+			</div>
+
+            <!-- Rejected jobs -->
+            <div class="flex items-center justify-between h-16 bg-gray-50 border-b border-gray-800">
+				<h1 class="m-5 text-3xl font-light text-gray-900 tracking-wide">Rejected Job Cards</h1>
+			</div>
+
+			<div class="p-4">
+				
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+                    <!-- card start -->
+                    <div class="bg-[#f2f9fe] rounded-lg shadow-lg p-8">
+                        <h2 class="text-xl font-bold text-gray-800 mb-1">Machine Brand: sample brand</h2>
+                        <div class="flex items-start space-x-5 ">
+                            <h2 class="text-l font-bold text-gray-800 mb-1">Bank: BOC</h2>
+                            <h2 class="text-l font-bold text-gray-800 mb-1">Job ID: 011</h2>
+                        </div>
+                        <h2 class="text-l font-bold text-gray-800 mb-1">Date: 2025/01/14</h2>
+                        <p class="text-gray-700 "> 
+                            Issue : Some issue note with sample machine
+                        </p>
+                        <p class="text-gray-700 ">
+                            Rejected Reason : Some issue note with sample machine
+                        </p>
+                        <div class="group relative">
+                            <div class="flex w-full mb-5 group">
+                                <label for="floating_first_name" class="text-l font-bold text-gray-800">Technitian : </label>
+                                <select name="floating_first_name" id="floating_first_name"
+                                class="peer block w-auto pl-5 pr-5 text-sm  text-gray-700 bg-transparent border-0 appearance-none dark:border-gray-600 dark:focus:border-black focus:outline-none focus:ring-0 focus:border-black" required>
+                                    <option class="text-gray-700" value="" disabled selected hidden>Select </option>
+                                    <option class="text-gray-700" value="modal1">Technitian 01</option>
+                                    <option class="text-gray-700" value="modal2">Technitian 02</option>
+                                    <option class="text-gray-700" value="modal3">Technitian 03</option>
+                                </select>
+                            </div>
+                        </div>
+                        <a class="group relative inline-block focus:ring-2 focus:outline-none" href="#">
+                            <span class="absolute inset-0 translate-x-0 translate-y-0 bg-[#ffbcad] transition-transform group-hover:translate-x-1 group-hover:translate-y-1 rounded-md"></span>
+                            <span class="relative inline-block border-2 border-current px-3 py-1 text-xs font-semibold tracking-wide text-black uppercase rounded-md">
+                                Re Assign
+                            </span>
+                        </a>
+
+                        <a class="ml-5 group relative inline-block focus:ring-2 focus:outline-none" href="#">
+                            <span class="absolute inset-0 translate-x-0 translate-y-0 bg-[#ffbcad] transition-transform group-hover:translate-x-1 group-hover:translate-y-1 rounded-md"></span>
+                            <span class="relative inline-block border-2 border-current px-3 py-1 text-xs font-semibold tracking-wide text-black uppercase rounded-md">
+                                Reject
+                            </span>
+                        </a>
+                    </div>
+                    <!-- card end -->
+                    
+                </div>
+			</div>
